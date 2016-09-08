@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InvoiceApplication {
@@ -10,6 +11,7 @@ public class InvoiceApplication {
 		int counter = 0;
 		// print the array
 		Scanner sc = new Scanner(System.in);
+		try{
 		System.out.println("Tax Rate ? :");
 		taxRate = sc.nextDouble();
 		while(true){
@@ -29,6 +31,12 @@ public class InvoiceApplication {
 		System.out.println("\n"+sTotal+"   subtotal");
 		System.out.println(sTotal*taxRate+"    tax");
 		System.out.println(sTotal*(1+taxRate) + "   grand Total");
+		}
+		catch (InputMismatchException e) {
+			System.out.println("Enter a valid tax rate or price. Eg: 2.3 ");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		sc.close();
 	}
 }
